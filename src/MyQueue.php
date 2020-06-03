@@ -25,7 +25,7 @@ class MyQueue
     public function dequeue()
     {
         if ($this->count === 0) {
-            throw new \RuntimeException('Stack underflow');
+            throw new \RuntimeException('Queue underflow');
         }
 
         $this->count--;
