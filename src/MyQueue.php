@@ -3,9 +3,9 @@
 namespace App;
 
 /**
- * The simplest stack implementation using an array
+ * The simplest queue implementation using an array
  */
-class MyStack
+class MyQueue
 {
     private $count;
     private $storage;
@@ -16,20 +16,20 @@ class MyStack
         $this->storage = [];
     }
 
-    public function push($value)
+    public function enqueue($value)
     {
         array_push($this->storage, $value);
         $this->count++;
     }
 
-    public function pop()
+    public function dequeue()
     {
         if ($this->count === 0) {
             throw new \RuntimeException('Stack underflow');
         }
 
         $this->count--;
-        return array_pop($this->storage);
+        return array_shift($this->storage);
     }
 
     public function isEmpty()

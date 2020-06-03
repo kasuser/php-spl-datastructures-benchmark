@@ -10,31 +10,31 @@ for ($i = 0; $i < $numberOfOperations; $i++) {
     array_push($array, random_int(PHP_INT_MIN, PHP_INT_MAX));
 }
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    array_pop($array);
+    array_shift($array);
 }
 $timeEnd = microtime(true);
-echo "Using an array as a stack took " . (string) ($timeEnd - $timeStart) . " sec.\n";
+echo "Using an array as a queue took " . (string) ($timeEnd - $timeStart) . " sec.\n";
 unset($array);
 
 $timeStart = microtime(true);
-$myStack = new \App\MyStack();
+$myQueue = new \App\MyQueue();
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $myStack->push(random_int(PHP_INT_MIN, PHP_INT_MAX));
+    $myQueue->enqueue(random_int(PHP_INT_MIN, PHP_INT_MAX));
 }
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $myStack->pop();
+    $myQueue->dequeue();
 }
 $timeEnd = microtime(true);
-echo "Using my MyStack object as a stack took " . (string) ($timeEnd - $timeStart) . " sec.\n";
-unset($myStack);
+echo "Using my MyQueue object as a queue took " . (string) ($timeEnd - $timeStart) . " sec.\n";
+unset($myQueue);
 
 $timeStart = microtime(true);
-$splStack = new SplStack();
+$splQueue = new SplQueue();
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $splStack->push(random_int(PHP_INT_MIN, PHP_INT_MAX));
+    $splQueue->enqueue(random_int(PHP_INT_MIN, PHP_INT_MAX));
 }
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $splStack->pop();
+    $splQueue->dequeue();
 }
 $timeEnd = microtime(true);
-echo "Using the SplStack object as a stack took " . (string) ($timeEnd - $timeStart) . " sec.\n";
+echo "Using the SplQueue object as a queue took " . (string) ($timeEnd - $timeStart) . " sec.\n";

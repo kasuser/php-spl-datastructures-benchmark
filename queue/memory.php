@@ -11,30 +11,30 @@ for ($i = 0; $i < $numberOfOperations; $i++) {
 }
 $memoryAfter = memory_get_usage();
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    array_pop($array);
+    array_shift($array);
 }
-echo "Using an array as a stack used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
+echo "Using an array as a queue used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
 unset($array);
 
 $memoryBefore = memory_get_usage();
-$myStack = new \App\MyStack();
+$myQueue = new \App\MyQueue();
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $myStack->push(random_int(PHP_INT_MIN, PHP_INT_MAX));
+    $myQueue->enqueue(random_int(PHP_INT_MIN, PHP_INT_MAX));
 }
 $memoryAfter = memory_get_usage();
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $myStack->pop();
+    $myQueue->dequeue();
 }
-echo "Using my MyStack object as a stack used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
-unset($myStack);
+echo "Using my MyQueue object as a queue used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
+unset($myQueue);
 
 $memoryBefore = memory_get_usage();
-$splStack = new SplStack();
+$splQueue = new SplQueue();
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $splStack->push(random_int(PHP_INT_MIN, PHP_INT_MAX));
+    $splQueue->enqueue(random_int(PHP_INT_MIN, PHP_INT_MAX));
 }
 $memoryAfter = memory_get_usage();
 for ($i = 0; $i < $numberOfOperations; $i++) {
-    $splStack->pop();
+    $splQueue->dequeue();
 }
-echo "Using the SplStack object as a stack used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
+echo "Using the SplQueue object as a queue used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
