@@ -1,0 +1,16 @@
+{
+    "name": "kasuser/php-spl-datastructures-benchmarks",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kasuser",
+            "email": "james.salvador.3000@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
