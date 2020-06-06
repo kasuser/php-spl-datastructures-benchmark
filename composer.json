@@ -1,6 +1,6 @@
 {
-    "name": "kasuser/php-spl-datastructures-benchmarks",
-    "description": "",
+    "name": "kasuser/spl-datastructures-benchmark",
+    "description": "Performance and memory tests for SPL data structures",
     "license": "MIT",
     "authors": [
         {

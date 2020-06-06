@@ -1,10 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 $numberOfOperations = 10000;
+$memoryBefore = $memoryAfter = 0;
 
 $memoryBefore = memory_get_usage();
+$timeStart = microtime(true);
 $array = [];
 for ($i = 0; $i < $numberOfOperations; $i++) {
     if ($i % 2 == 0) {
@@ -21,10 +23,12 @@ for ($i = 0; $i < $numberOfOperations; $i++) {
         array_pop($array);
     }
 }
-echo "Using an array as a doubly linked list used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
+$timeEnd = microtime(true);
+echo "Using an array as a doubly linked list take " . (string) ($timeEnd - $timeStart) . " sec and use " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
 unset($array);
 
 $memoryBefore = memory_get_usage();
+$timeStart = microtime(true);
 $myDoublyLinkedList = new \App\MyDoublyLinkedList();
 for ($i = 0; $i < $numberOfOperations; $i++) {
     if ($i % 2 == 0) {
@@ -41,10 +45,12 @@ for ($i = 0; $i < $numberOfOperations; $i++) {
         $myDoublyLinkedList->pop();
     }
 }
-echo "Using my MyDoublyLinkedList object as a doubly linked list used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
+$timeEnd = microtime(true);
+echo "Using my MyDoublyLinkedList object as a doubly linked list take " . (string) ($timeEnd - $timeStart) . " sec and use " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
 unset($myDoublyLinkedList);
 
 $memoryBefore = memory_get_usage();
+$timeStart = microtime(true);
 $splDoublyLinkedList = new SplDoublyLinkedList();
 for ($i = 0; $i < $numberOfOperations; $i++) {
     if ($i % 2 == 0) {
@@ -61,4 +67,5 @@ for ($i = 0; $i < $numberOfOperations; $i++) {
         $splDoublyLinkedList->pop();
     }
 }
-echo "Using the SplDoublyLinkedList object as a doubly linked list used " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";
+$timeEnd = microtime(true);
+echo "Using the SplDoublyLinkedList object as a doubly linked list take " . (string) ($timeEnd - $timeStart) . " sec and use " . (string) ($memoryAfter - $memoryBefore) . " bytes.\n";

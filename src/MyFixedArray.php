@@ -13,7 +13,7 @@ class MyFixedArray implements \ArrayAccess
     public function __construct($size = 0)
     {
         $this->size = $size;
-        $this->storage = [];
+        $this->storage = array_fill(0, $size - 1, null);
     }
 
     public function offsetExists($offset)
@@ -49,6 +49,6 @@ class MyFixedArray implements \ArrayAccess
             throw new \RuntimeException('Index invalid or out of range');
         }
 
-        \array_splice($this->storage, $offset, 1);
+        $this->storage[$offset] = null;
     }
 }
